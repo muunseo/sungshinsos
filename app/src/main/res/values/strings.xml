@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">sungshinsos</string>
+    <string name="sungshin_domain_hint">sungshin.ac.kr</string>
+    <string name="username">사용자이름</string>
+    <string name="password">비밀번호</string>
+    <string name="email">이메일</string>
+    <string name="register">회원가입</string>
+
+    <!-- Base application theme -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here -->
+        <item name="colorPrimary">#B081F3</item>
+        <item name="colorPrimaryDark">#13011B</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+</resources>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="수정관"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="16dp" />
+
+        <Button
+            android:id="@+id/button_floor_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1층" />
+
+        <Button
+            android:id="@+id/button_floor_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2층" />
+
+        <Button
+            android:id="@+id/button_floor_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3층" />
+
+        <Button
+            android:id="@+id/button_floor_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4층" />
+
+        <Button
+            android:id="@+id/button_floor_5a"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="a동 5층" />
+
+        <Button
+            android:id="@+id/button_floor_5b"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="b동 5층" />
+
+        <Button
+            android:id="@+id/button_floor_5c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="c동 5층" />
+
+        <Button
+            android:id="@+id/button_floor_6a"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="a동 6층" />
+
+        <Button
+            android:id="@+id/button_floor_6b"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="b동 6층" />
+
+        <Button
+            android:id="@+id/button_floor_6c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="c동 6층" />
+
+        <Button
+            android:id="@+id/button_floor_7a"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="a동 7층" />
+
+        <Button
+            android:id="@+id/button_floor_7b"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="b동 7층" />
+
+        <Button
+            android:id="@+id/button_floor_7c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="c동 7층" />
+
+        <Button
+            android:id="@+id/button_floor_8a"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="a동 8층" />
+
+        <Button
+            android:id="@+id/button_floor_8b"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="b동 8층" />
+
+        <Button
+            android:id="@+id/button_floor_8c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="c동 8층" />
+
+        <Button
+            android:id="@+id/button_floor_9a"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="a동 9층" />
+
+        <Button
+            android:id="@+id/button_floor_9b"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="b동 9층" />
+
+        <Button
+            android:id="@+id/button_floor_9c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="c동 9층" />
+
+        <Button
+            android:id="@+id/button_floor_10a"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="a동 10층" />
+
+        <Button
+            android:id="@+id/button_floor_10b"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="b동 10층" />
+
+        <Button
+            android:id="@+id/button_floor_10c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="c동 10층" />
+
+    </LinearLayout>
+</ScrollView>

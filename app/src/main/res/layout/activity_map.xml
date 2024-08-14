@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MapActivity">
+
+    <LinearLayout
+        android:id="@+id/emergencyContactsSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/emergencyContactsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:background="#D3D3D3"
+            android:text="비상연락망"
+            android:drawableEnd="@android:drawable/arrow_down_float"
+            android:gravity="center_vertical"
+            android:textColor="#000000"/>
+
+        <LinearLayout
+            android:id="@+id/emergencyContactsContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:padding="16dp"
+            android:background="#8B8B8B"
+            android:text="비상연락망"
+            android:drawableEnd="@android:drawable/arrow_down_float"
+            android:gravity="center_vertical"
+            android:textColor="#FFFFFF">
+
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="이름" />
+
+            <EditText
+                android:id="@+id/editTextPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="전화번호" />
+
+            <Button
+                android:id="@+id/buttonAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="추가" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewContacts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- "수정 캠퍼스" section -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="수정 캠퍼스"
+        android:padding="16dp"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <!-- Placeholder for "수정 캠퍼스" map image -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="16dp"
+        android:background="#CCCCCC">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="수정 캠퍼스 지도 사진"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_sjmap"
+            android:scaleType="centerCrop"
+            android:onClick="openMapDetail"/>
+    </FrameLayout>
+
+    <!-- "운정 캠퍼스" section -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="운정 캠퍼스"
+        android:padding="16dp"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <!-- Placeholder for "운정 캠퍼스" map image -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="16dp"
+        android:background="#CCCCCC">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="운정 캠퍼스 지도 사진"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+    </FrameLayout>
+
+</LinearLayout>

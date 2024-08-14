@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MapDetailActivity">
+
+    <ImageView
+        android:id="@+id/imageViewMap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_sjmap" />
+
+    <Button
+        android:id="@+id/buttonSujungBuilding"
+        android:layout_width="76dp"
+        android:layout_height="28dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="232dp"
+        android:layout_marginTop="390dp"
+        android:background="#7295A5"
+        android:text="수정관"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/buttonSungsinBuilding"
+        android:layout_width="74dp"
+        android:layout_height="32dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="141dp"
+        android:layout_marginTop="315dp"
+        android:background="#7295A5"
+        android:text="성신관"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/buttonMusicBuilding"
+        android:layout_width="63dp"
+        android:layout_height="27dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="165dp"
+        android:layout_marginTop="252dp"
+        android:background="#7295A5"
+        android:text="음악관"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/buttonJ1Building"
+        android:layout_width="62dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="69dp"
+        android:layout_marginTop="112dp"
+        android:background="#7295A5"
+        android:text="조형 1관"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/buttonJ2Building"
+        android:layout_width="64dp"
+        android:layout_height="29dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="109dp"
+        android:layout_marginTop="191dp"
+        android:background="#7295A5"
+        android:text="조형 2관"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/buttonNanhyangBuilding"
+        android:layout_width="60dp"
+        android:layout_height="23dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="244dp"
+        android:background="#7295A5"
+        android:text="난향관"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/buttonAdministrationBuilding"
+        android:layout_width="71dp"
+        android:layout_height="27dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="309dp"
+        android:background="#7295A5"
+        android:text="행정관"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/buttonLibrary"
+        android:layout_width="55dp"
+        android:layout_height="26dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="87dp"
+        android:layout_marginTop="467dp"
+        android:background="#7295A5"
+        android:text="도서관"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#7295A5" />
+
+</RelativeLayout>
+
+
+
+

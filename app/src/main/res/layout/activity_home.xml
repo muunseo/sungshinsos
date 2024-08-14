@@ -1,0 +1,193 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6F6F6">
+
+    <!-- Title TextViews -->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="성신여자대학교"
+        android:textColor="#9F81D5"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SUNGSHIN WOMEN'S UNIVERSITY"
+        android:textColor="#9F81D5"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp" />
+
+    <!-- Image Views -->
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="52dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="160dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:srcCompat="@drawable/sslogo" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="252dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/mypage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/chatbot"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/post"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView" />
+
+    <!-- New Home Button -->
+
+    <!-- Title Texts for Images -->
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/map"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView5" />
+
+    <ImageView
+        android:id="@+id/imageView_home"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/ic_home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5" />
+
+    <TextView
+        android:id="@+id/chatbot_title"
+        android:layout_width="60dp"
+        android:layout_height="18dp"
+        android:text="sos 챗봇"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/post_title"
+        android:layout_width="66dp"
+        android:layout_height="22dp"
+        android:text="sos 게시판"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintStart_toStartOf="@+id/imageView5"
+        app:layout_constraintEnd_toEndOf="@+id/imageView5" />
+
+    <TextView
+        android:id="@+id/map_title"
+        android:layout_width="62dp"
+        android:layout_height="18dp"
+        android:text="sos 지도"
+        app:layout_constraintTop_toBottomOf="@+id/imageView11"
+        app:layout_constraintStart_toStartOf="@+id/imageView11"
+        app:layout_constraintEnd_toEndOf="@+id/imageView11" />
+
+    <TextView
+        android:id="@+id/mypage_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="마이페이지"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9"
+        app:layout_constraintStart_toStartOf="@+id/imageView9"
+        app:layout_constraintEnd_toEndOf="@+id/imageView9" />
+
+    <!-- New Home Title -->
+    <TextView
+        android:id="@+id/home_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="홈화면"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_home"
+        app:layout_constraintStart_toStartOf="@+id/imageView_home"
+        app:layout_constraintEnd_toEndOf="@+id/imageView_home" />
+
+    <ImageView
+        android:id="@+id/imageView_chatbot2"
+        android:layout_width="102dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="264dp"
+        android:background="@drawable/ic_chatbot2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView5" />
+
+    <ImageView
+        android:id="@+id/imageView_mypage2"
+        android:layout_width="102dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="264dp"
+        android:background="@drawable/ic_mypage2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView" />
+
+
+    <ImageView
+        android:id="@+id/imageView_map2"
+        android:layout_width="102dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginBottom="140dp"
+        android:background="@drawable/ic_map2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView_post2"
+        android:layout_width="102dp"
+        android:layout_height="105dp"
+        android:layout_marginBottom="140dp"
+        android:background="@drawable/ic_post2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.686"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="138dp"
+        android:layout_height="29dp"
+        android:text="주요서비스 바로가기"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="323dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

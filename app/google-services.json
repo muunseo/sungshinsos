@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "464741019472",
+    "project_id": "sungshinsos-51c75",
+    "storage_bucket": "sungshinsos-51c75.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464741019472:android:29e7eac9b16f2fa9488655",
+        "android_client_info": {
+          "package_name": "com.example.sungshinsos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCH2tin4z88JmHc3RaquZggDPxhT5L3DOk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
