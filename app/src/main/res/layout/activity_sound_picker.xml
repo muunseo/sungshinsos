@@ -8,39 +8,121 @@
 
     <Switch
         android:id="@+id/enableNotificationsSwitch"
+        android:layout_width="168dp"
+        android:layout_height="99dp"
+        android:checked="false"
+        android:text="알림 설정"
+
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <TextView
+        android:id="@+id/notificationLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="알림 설정"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
+        android:text="알림 선택"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/notificationSettingsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="gone"
-        android:layout_marginTop="16dp">
+        android:visibility="gone">
 
-        <Switch
-            android:id="@+id/postCreateSwitch"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/postCreateSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="게시물 작성 알림"
+                android:checked="false"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+            <Button
+                android:id="@+id/pickPostCreateRingtoneButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="알림음 선택"
+                android:layout_marginStart="16dp"
+                android:enabled="false" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/selectedPostCreateRingtoneTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="게시물 작성 알림"
-            tools:ignore="UseSwitchCompatOrMaterialXml" />
+            android:text="선택한 알림음:"
+            android:layout_marginTop="8dp"
+            android:visibility="gone" />
 
-        <Switch
-            android:id="@+id/postUpdateSwitch"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/postUpdateSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="게시물 수정 알림"
+                android:checked="false"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+            <Button
+                android:id="@+id/pickPostUpdateRingtoneButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="알림음 선택"
+                android:layout_marginStart="16dp"
+                android:enabled="false" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/selectedPostUpdateRingtoneTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="게시물 수정 알림"
-            tools:ignore="UseSwitchCompatOrMaterialXml" />
+            android:text="선택한 알림음:"
+            android:layout_marginTop="8dp"
+            android:visibility="gone" />
 
-        <Switch
-            android:id="@+id/commentCreateSwitch"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/commentCreateSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="댓글 작성 알림"
+                android:checked="false"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+            <Button
+                android:id="@+id/pickCommentCreateRingtoneButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="알림음 선택"
+                android:layout_marginStart="16dp"
+                android:enabled="false" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/selectedCommentCreateRingtoneTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="댓글 작성 알림"
-            tools:ignore="UseSwitchCompatOrMaterialXml" />
+            android:text="선택한 알림음:"
+            android:layout_marginTop="8dp"
+            android:visibility="gone" />
 
     </LinearLayout>
 </LinearLayout>
