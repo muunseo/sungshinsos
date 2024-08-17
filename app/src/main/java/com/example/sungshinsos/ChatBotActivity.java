@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.UUID;
 import java.util.concurrent.Executors;
 
 public class ChatBotActivity extends AppCompatActivity {
@@ -25,6 +26,9 @@ public class ChatBotActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chatbot);
+
+        // 프로젝트 ID를 지정합니다.
+        String projectId = "sungshinsos-51c75";
 
         // DialogflowClient 초기화
         dialogflowClient = new DialogflowClient();
@@ -41,10 +45,12 @@ public class ChatBotActivity extends AppCompatActivity {
                 return; // 빈 쿼리는 처리하지 않음
             }
 
+            String sessionId = UUID.randomUUID().toString();
+
             // ExecutorService를 사용하여 쿼리 처리
             Executors.newSingleThreadExecutor().execute(() -> {
                 try {
-                    String response = dialogflowClient.sendQuery(query);
+                    String response = dialogflowClient.sendQuery(projectId, sessionId, query);
                     runOnUiThread(() -> {
                         addMessageToChat("User: " + query, true);
                         addMessageToChat(response, false);
@@ -77,5 +83,11 @@ public class ChatBotActivity extends AppCompatActivity {
 
         // 새로운 메시지가 추가될 때 스크롤을 맨 아래로 이동
         chatScrollView.post(() -> chatScrollView.fullScroll(ScrollView.FOCUS_DOWN));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // HTTP 클라이언트를 종료할 필요는 없음
     }
 }

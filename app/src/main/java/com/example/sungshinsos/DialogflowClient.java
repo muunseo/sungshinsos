@@ -1,5 +1,6 @@
 package com.example.sungshinsos;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -13,7 +14,9 @@ import java.util.concurrent.TimeUnit;
 public class DialogflowClient {
 
     private static final String TAG = "DialogflowClient";
-    private static final String SERVER_URL = "http://10.0.2.2:3000/chatbot"; // 서버의 엔드포인트 URL로 변경
+    private static final String API_URL = "https://dialogflow.googleapis.com/v2/projects/%s/agent/sessions/%s:detectIntent";
+    private static final String BEARER_TOKEN = "fzUx1yMDQ-W8hPgdXJES4c:APA91bGuInDqArlg7-EEYVuvzkZrvZJ6hZGBRIFL4EZaQYxwRbCrK50oN-rlTYXrEbX6uVs-8N9J9OiwxHObbyNNG5B37V8cMJe_6KyQ37qanv4ZiU1CFaSyZkb1dG3HX7p9d9hfmb_K"; // Google Cloud Access Token
+
     private OkHttpClient httpClient;
 
     public DialogflowClient() {
@@ -23,15 +26,25 @@ public class DialogflowClient {
                 .build();
     }
 
-    public String sendQuery(String query) {
-        // 서버로 보낼 요청 본문 생성
-        JsonObject requestBody = new JsonObject();
-        requestBody.addProperty("message", query);
+    public String sendQuery(String projectId, String sessionId, String query) {
+        String url = String.format(API_URL, projectId, sessionId);
 
-        // 서버에 요청 보내기
+        // Build request body
+        JsonObject textInput = new JsonObject();
+        textInput.addProperty("text", query);
+        textInput.addProperty("languageCode", "ko");
+
+        JsonObject queryInput = new JsonObject();
+        queryInput.add("text", textInput);
+
+        JsonObject requestBody = new JsonObject();
+        requestBody.add("queryInput", queryInput);
+
+        // Make the HTTP request
         Request request = new Request.Builder()
-                .url(SERVER_URL)
+                .url(url)
                 .post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"), new Gson().toJson(requestBody)))
+                .addHeader("Authorization", "Bearer " + BEARER_TOKEN)
                 .build();
 
         try (Response response = httpClient.newCall(request).execute()) {
@@ -39,10 +52,11 @@ public class DialogflowClient {
                 Log.e(TAG, "Unexpected code " + response);
                 return "Error: " + response.message();
             }
-            // 응답을 파싱하여 결과 반환
+            // Parse the response
             String responseBody = response.body().string();
             JsonObject jsonResponse = new Gson().fromJson(responseBody, JsonObject.class);
-            return jsonResponse.getAsJsonPrimitive("response").getAsString();
+            JsonObject queryResult = jsonResponse.getAsJsonObject("queryResult");
+            return queryResult.getAsJsonPrimitive("fulfillmentText").getAsString();
         } catch (IOException e) {
             Log.e(TAG, "Request failed", e);
             return "Error: " + e.getMessage();
