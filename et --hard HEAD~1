@@ -1,0 +1,85 @@
+[33mcommit ae6aadabc8ce8214db2783f4386892f9ea70c87d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Author: Heejin Cho <20231431@sungshin.ac.kr>
+Date:   Thu Aug 15 23:57:42 2024 +0900
+
+    Remove sensitive information and update files
+
+[1mdiff --git a/.idea/vcs.xml b/.idea/vcs.xml[m
+[1mnew file mode 100644[m
+[1mindex 0000000..94a25f7[m
+[1m--- /dev/null[m
+[1m+++ b/.idea/vcs.xml[m
+[36m@@ -0,0 +1,6 @@[m
+[32m+[m[32m<?xml version="1.0" encoding="UTF-8"?>[m
+[32m+[m[32m<project version="4">[m
+[32m+[m[32m  <component name="VcsDirectoryMappings">[m
+[32m+[m[32m    <mapping directory="$PROJECT_DIR$" vcs="Git" />[m
+[32m+[m[32m  </component>[m
+[32m+[m[32m</project>[m
+\ No newline at end of file[m
+[1mdiff --git a/app/google-services.json b/app/google-services.json[m
+[1mnew file mode 100644[m
+[1mindex 0000000..98271cc[m
+[1m--- /dev/null[m
+[1m+++ b/app/google-services.json[m
+[36m@@ -0,0 +1,29 @@[m
+[32m+[m[32m{[m
+[32m+[m[32m  "project_info": {[m
+[32m+[m[32m    "project_number": "464741019472",[m
+[32m+[m[32m    "project_id": "sungshinsos-51c75",[m
+[32m+[m[32m    "storage_bucket": "sungshinsos-51c75.appspot.com"[m
+[32m+[m[32m  },[m
+[32m+[m[32m  "client": [[m
+[32m+[m[32m    {[m
+[32m+[m[32m      "client_info": {[m
+[32m+[m[32m        "mobilesdk_app_id": "1:464741019472:android:29e7eac9b16f2fa9488655",[m
+[32m+[m[32m        "android_client_info": {[m
+[32m+[m[32m          "package_name": "com.example.sungshinsos"[m
+[32m+[m[32m        }[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "oauth_client": [],[m
+[32m+[m[32m      "api_key": [[m
+[32m+[m[32m        {[m
+[32m+[m[32m          "current_key": "AIzaSyCH2tin4z88JmHc3RaquZggDPxhT5L3DOk"[m
+[32m+[m[32m        }[m
+[32m+[m[32m      ],[m
+[32m+[m[32m      "services": {[m
+[32m+[m[32m        "appinvite_service": {[m
+[32m+[m[32m          "other_platform_oauth_client": [][m
+[32m+[m[32m        }[m
+[32m+[m[32m      }[m
+[32m+[m[32m    }[m
+[32m+[m[32m  ],[m
+[32m+[m[32m  "configuration_version": "1"[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/app/src/main/java/com/example/sungshinsos/PostResponse.java b/app/src/main/java/com/example/sungshinsos/PostResponse.java[m
+[1mindex f8552d4..f577562 100644[m
+[1m--- a/app/src/main/java/com/example/sungshinsos/PostResponse.java[m
+[1m+++ b/app/src/main/java/com/example/sungshinsos/PostResponse.java[m
+[36m@@ -10,4 +10,4 @@[m [mpublic class PostResponse {[m
+     public void setPostId(String postId) {[m
+         this.postId = postId;[m
+     }[m
+[31m-}[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/app/src/main/res/raw/credentials.json b/app/src/main/res/raw/credentials.json[m
+[1mnew file mode 100644[m
+[1mindex 0000000..7bc76a6[m
+[1m--- /dev/null[m
+[1m+++ b/app/src/main/res/raw/credentials.json[m
+[36m@@ -0,0 +1,13 @@[m
+[32m+[m[32m{[m
+[32m+[m[32m  "type": "service_account",[m
+[32m+[m[32m  "project_id": "sungshinsos-51c75",[m
+[32m+[m[32m  "private_key_id": "f1fb2e9075ef47fb99a3d92ac65eb141d17dfea8",[m
+[32m+[m[32m  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDa2wW8fwpS8IwS\nieapkPaaMFMdtNV9v8nNShs0XJ6xuHBMQNi9aCslJ/qlJkZEmIA9ztFySmhQ1IwV\nI+yHcXeXriGZaDsGCESZK/O8Y1p3YtcYpXCKaLhh8l59EujFRajgI06sW745VQ6H\nVQTN9ILh6yRsI+DfeYgs2PuJAnyXPiM8GauOvTGrd73/BtfQ8i2QXZjUF6oRM30X\n9WYiI8JejRE8u6wxu/0YlEajytZ2YrqYsbsNEXJHRG9FChFcjkbpaXMQI1B6v97H\nGKTLkQTiVFV7oJJ0+6Li+jrZO2pM4F81YtMpTqm4KiNqXe57JkNS+mptd+pEbKVi\nKR3bLTBVAgMBAAECggEADHlydMGK/Zo/aakZkC22mKhLfIR7rLy7TGu+bDghRYD9\nSaNilz0yRF5of3RUigFlQeCheJG8K2tKBsRy7W9uwSMIQD28K4ZaHp7uOB0zoV1t\nZDa92O3KIK8XaqqiwOfNDeWFTPa3u33ZI6aZbQHUWfs0qsNKxIIhXGkLwU32ewpR\nHsrKqEvahrgHpl9gh0KQWwavrH4BrszCI5f9wNkSCoVhBy15rPhXQ/mCjEAapGoE\nfyxa0LE47jjmPmgZmbneUHP0KMhna15Fse20BXfRPekWTZzKQCrKEhW8evUpaNh2\nVpXyrxXBqLxwjojSH+YGUt82fS4YK0OzLTM6vWL+sQKBgQD8aJkcYaJG5OBdlkQp\n21quF9xE/hb0YNo0+ZEQBD5UopnqYo/REelk5IvW0Z3r7gXIN83GgNb1nzDnQfaD\n2gfsNbGbfGfzfkA/9hQBtsMiWa43tcRKA1X/dbbnCJ6u08KbJ9g7BnFEClyrA5YN\nZ9l1PL6lY6r9C6KswusE2XXSmQKBgQDd+DT46h1ctGRuq6VAgUDDYSIOBjPShQpw\nsxjBp2rDvDH1KbO64key8XhHZ1vDz6AC2OZJP+p3wqTa4U0M40ssqTbkYFQsyjeo\nZauVZcBNHoFM1yiIqTk0e5CpMSnh4nVNa9sILuVu1BIedJkp+mDnYdJGVKGf/w9d\nD+F7NGEdHQKBgQCnaIycmVjzIlx5Ve/Rvy4Op76td8Urwo0Xc6s170qUAeCJ52Mx\nrGqbQ0ZIbXELiSwGlpSBovRvpmzeBQ8GdnaowRgSY1ni0oq0oXa1iE02HDsDsigF\nWt8P9zgfVcVBeSvqkmvFAknfcevydQdxzr4ZFvfvZAKFoND9Oq574etWiQKBgCDf\no6jBs3uJU954GU9GVTsaZZrCHGavQW6Td7UmgE9gzd1LQc0JuiisTm30xshnNYF2\nchSjHKyD7TplZ63i8703imOkSJMhl8Ce3hyQJzzEqc2hh+VFeq1lJ3WHTHahvVGs\nCZJar6wMSGquRgjLhhJ+kE/ONOmnMrVLps9CYKeZAoGBAKbCoTCtfSA2jzy3Ld3G\ncebIfsVlHVKhxYO2wYbk10mw7kpbKAxUBgIYPbdJR1L+HpxEFMpNxQMH/Rxdv16O\nlWtppCNgduVIBv4zOO4L3vji/UHgTruq40FnwfW15qBMvHpquogDB3yA9XCO65hE\n42bGLyIK87SY1shZf59bOuWM\n-----END PRIVATE KEY-----\n",[m
+[32m+[m[32m  "client_email": "sungshinsos-779@sungshinsos-51c75.iam.gserviceaccount.com",[m
+[32m+[m[32m  "client_id": "111268048863356250038",[m
+[32m+[m[32m  "auth_uri": "https://accounts.google.com/o/oauth2/auth",[m
+[32m+[m[32m  "token_uri": "https://oauth2.googleapis.com/token",[m
+[32m+[m[32m  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",[m
+[32m+[m[32m  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sungshinsos-779%40sungshinsos-51c75.iam.gserviceaccount.com",[m
+[32m+[m[32m  "universe_domain": "googleapis.com"[m
+[32m+[m[32m}[m
