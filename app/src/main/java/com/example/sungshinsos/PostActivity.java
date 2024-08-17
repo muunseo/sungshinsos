@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class PostActivity extends AppCompatActivity implements PostAdapter.OnPostDeleteListener, PostAdapter.OnPostEditListener {
     private static final int REQUEST_CODE_CREATE_POST = 1;
@@ -63,7 +64,7 @@ public class PostActivity extends AppCompatActivity implements PostAdapter.OnPos
         // 게시물 관련 초기화
         recyclerViewPosts = findViewById(R.id.recyclerViewPosts);
         recyclerViewPosts.setLayoutManager(new LinearLayoutManager(this));
-        postList = new ArrayList<>();
+        postList = new ArrayList<>(); // postList 초기화
         postAdapter = new PostAdapter(postList, this, this, this);
         recyclerViewPosts.setAdapter(postAdapter);
 
@@ -72,24 +73,27 @@ public class PostActivity extends AppCompatActivity implements PostAdapter.OnPos
         databaseReference = database.getReference("Post");
 
         // 데이터베이스에 있는 게시물 데이터를 읽어오는 리스너 추가
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                postList.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Post post = snapshot.getValue(Post.class);
-                    if (post != null) {
-                        postList.add(post);
-                    }
-                }
-                postAdapter.notifyDataSetChanged();
-            }
+        databaseReference.orderByChild("timestamp").limitToLast(100)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        postList.clear();
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("PostActivity", "Failed to read value.", databaseError.toException());
-            }
-        });
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            Post post = snapshot.getValue(Post.class);
+                            if (post != null) {
+                                postList.add(post);
+                            }
+                        }
+                        Collections.reverse(postList);  // 최신순으로 정렬
+                        postAdapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Log.e("PostActivity", "Failed to read value.", databaseError.toException());
+                    }
+                });
 
         FloatingActionButton fabAddPost = findViewById(R.id.fabAddPost);
         fabAddPost.setOnClickListener(v -> {
@@ -104,7 +108,7 @@ public class PostActivity extends AppCompatActivity implements PostAdapter.OnPos
 
         if (requestCode == REQUEST_CODE_CREATE_POST || requestCode == REQUEST_CODE_EDIT_POST) {
             // 강제로 데이터베이스에서 게시물 목록을 다시 읽어옴
-            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            databaseReference.orderByChild("timestamp").limitToLast(100).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     postList.clear();
@@ -114,6 +118,8 @@ public class PostActivity extends AppCompatActivity implements PostAdapter.OnPos
                             postList.add(post);
                         }
                     }
+                    // 최신 게시물이 위로 오도록 리스트를 뒤집음
+                    Collections.reverse(postList);
                     postAdapter.notifyDataSetChanged();
                 }
 
@@ -132,11 +138,19 @@ public class PostActivity extends AppCompatActivity implements PostAdapter.OnPos
         if (position >= 0 && position < postList.size()) {
             Post post = postList.get(position);
             if (post != null) {
+                // 데이터베이스에서 게시물 삭제
                 databaseReference.child(post.getPostId()).removeValue()
                         .addOnSuccessListener(aVoid -> {
                             Log.d("PostActivity", "게시글이 성공적으로 삭제되었습니다.");
-                            postList.remove(position);
-                            postAdapter.notifyItemRemoved(position);
+
+                            // UI에서 게시물 삭제
+                            if (position >= 0 && position < postList.size()) {
+                                postList.remove(position);
+                                postAdapter.notifyItemRemoved(position);
+                                Toast.makeText(PostActivity.this, "게시글이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Log.e("PostActivity", "Invalid position after deletion: " + position);
+                            }
                         })
                         .addOnFailureListener(e -> {
                             Log.e("PostActivity", "Failed to delete post.", e);
@@ -146,6 +160,8 @@ public class PostActivity extends AppCompatActivity implements PostAdapter.OnPos
             Log.e("PostActivity", "Invalid position: " + position);
         }
     }
+
+
 
     @Override
     public void onPostEdit(int position) {

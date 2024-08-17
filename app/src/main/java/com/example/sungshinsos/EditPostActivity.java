@@ -107,6 +107,7 @@ public class EditPostActivity extends AppCompatActivity {
                     returnIntent.putExtra("content", content);
                     returnIntent.putExtra("postId", response.body().getPostId());
                     setResult(RESULT_OK, returnIntent);
+                    Toast.makeText(EditPostActivity.this, "게시물이 성공적으로 수정되었습니다.", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
                     // 서버 응답 내용 로그

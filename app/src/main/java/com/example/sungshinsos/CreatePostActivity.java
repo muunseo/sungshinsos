@@ -100,12 +100,15 @@ public class CreatePostActivity extends AppCompatActivity {
                 return;
             }
 
+            // 현재 시간을 타임스탬프로 설정
+            long currentTime = System.currentTimeMillis();
+
             // 서버로 게시물 전송
-            sendPostToServer(title, content, userId);
+            sendPostToServer(title, content, userId, currentTime);
         });
     }
 
-    public void sendPostToServer( String title, String content, String userId) {
+    public void sendPostToServer(String title, String content, String userId, long timestamp) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://10.0.2.2:3000/") // 서버 URL로 변경
                 .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().setLenient().create()))
@@ -114,7 +117,7 @@ public class CreatePostActivity extends AppCompatActivity {
         PostService service = retrofit.create(PostService.class);
 
         // Post 객체 생성
-        Post post = new Post(title, content, userId);
+        Post post = new Post(title, content, userId, timestamp);
 
         Call<PostResponse> call = service.createPost(post);
         call.enqueue(new Callback<PostResponse>() {
@@ -127,6 +130,7 @@ public class CreatePostActivity extends AppCompatActivity {
                     returnIntent.putExtra("content", content);
                     returnIntent.putExtra("postId", response.body().getPostId()); // Add postId to returnIntent
                     setResult(RESULT_OK, returnIntent);
+                    Toast.makeText(CreatePostActivity.this, "게시물을 성공적으로 작성했습니다.", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
                     Log.e("CreatePostActivity", "Failed to create post: " + response.errorBody().toString());

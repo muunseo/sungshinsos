@@ -5,6 +5,7 @@ public class Post {
     private String content;
     private String userId;
     private String username;
+    private long timestamp;
 
     public Post(){
 
@@ -18,10 +19,11 @@ public class Post {
         this.username = username;
     }
 
-    public Post(String title, String content, String userId) {
+    public Post(String title, String content, String userId, long timestamp) {
         this.title = title;
         this.content = content;
         this.userId = userId;
+        this.timestamp = timestamp;
     }
 
     public Post(String postId, String title, String content, String userId){
@@ -71,5 +73,13 @@ public class Post {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 }
