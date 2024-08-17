@@ -109,12 +109,6 @@
         android:text="도서관"
         android:textColor="#FFFFFF" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="#7295A5" />
-
 </RelativeLayout>
 
 
