@@ -2,6 +2,7 @@ package com.example.sungshinsos;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
         // 삭제 버튼 클릭 리스너
         holder.buttonDeletePost.setOnClickListener(v -> {
+            Log.d("PostAdapter", "Delete button clicked for position: " + position);
             if (onPostDeleteListener != null) {
                 onPostDeleteListener.onPostDelete(position);
             }
