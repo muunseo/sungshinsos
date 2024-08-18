@@ -53,6 +53,7 @@ dependencies {
     // Firebase 라이브러리
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
+    implementation ("com.google.firebase:firebase-core:21.0.0")
     implementation("com.google.firebase:firebase-messaging:23.0.0")
 
     // 테스트 관련 라이브러리

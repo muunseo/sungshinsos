@@ -3,30 +3,62 @@ package com.example.sungshinsos;
 import android.content.Context;
 import android.util.Log;
 
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.auth.oauth2.GoogleCredentials;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import okhttp3.*;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.concurrent.TimeUnit;
 
 public class DialogflowClient {
 
     private static final String TAG = "DialogflowClient";
     private static final String API_URL = "https://dialogflow.googleapis.com/v2/projects/%s/agent/sessions/%s:detectIntent";
-    private static final String BEARER_TOKEN = "fzUx1yMDQ-W8hPgdXJES4c:APA91bGuInDqArlg7-EEYVuvzkZrvZJ6hZGBRIFL4EZaQYxwRbCrK50oN-rlTYXrEbX6uVs-8N9J9OiwxHObbyNNG5B37V8cMJe_6KyQ37qanv4ZiU1CFaSyZkb1dG3HX7p9d9hfmb_K"; // Google Cloud Access Token
 
     private OkHttpClient httpClient;
 
-    public DialogflowClient() {
-        httpClient = new OkHttpClient.Builder()
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .build();
+    public DialogflowClient(Context context) {
+        try {
+            // JSON 키 파일을 assets에서 읽기
+            InputStream credentialsStream = context.getAssets().open("sungshinsos-catbot.json");
+            GoogleCredentials credentials = GoogleCredentials.fromStream(credentialsStream)
+                    .createScoped("https://www.googleapis.com/auth/cloud-platform");
+
+            httpClient = new OkHttpClient.Builder()
+                    .connectTimeout(30, TimeUnit.SECONDS)
+                    .readTimeout(30, TimeUnit.SECONDS)
+                    .authenticator(new Authenticator() {
+                        @Override
+                        public Request authenticate(Route route, Response response) throws IOException {
+                            // Access token 갱신 로직 추가
+                            String accessToken = getAccessToken(credentials);
+                            return response.request().newBuilder()
+                                    .header("Authorization", "Bearer " + accessToken)
+                                    .build();
+                        }
+                    })
+                    .build();
+        } catch (IOException e) {
+            Log.e(TAG, "Failed to initialize DialogflowClient", e);
+        }
+    }
+
+    private String getAccessToken(GoogleCredentials credentials) throws IOException {
+        // GoogleCredentials 객체를 사용하여 액세스 토큰을 얻는 로직
+        credentials.refreshIfExpired();
+        return credentials.getAccessToken().getTokenValue();
     }
 
     public String sendQuery(String projectId, String sessionId, String query) {
+        if (httpClient == null) {
+            Log.e(TAG, "HttpClient not initialized");
+            return "Error: HttpClient not initialized";
+        }
+
         String url = String.format(API_URL, projectId, sessionId);
 
         // Build request body
@@ -44,7 +76,6 @@ public class DialogflowClient {
         Request request = new Request.Builder()
                 .url(url)
                 .post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"), new Gson().toJson(requestBody)))
-                .addHeader("Authorization", "Bearer " + BEARER_TOKEN)
                 .build();
 
         try (Response response = httpClient.newCall(request).execute()) {

@@ -31,7 +31,7 @@ public class ChatBotActivity extends AppCompatActivity {
         String projectId = "sungshinsos-51c75";
 
         // DialogflowClient 초기화
-        dialogflowClient = new DialogflowClient();
+        dialogflowClient = new DialogflowClient(this);
 
         // UI 요소 초기화
         Button sendButton = findViewById(R.id.sendBtn);

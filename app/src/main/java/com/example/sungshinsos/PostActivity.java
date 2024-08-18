@@ -138,7 +138,6 @@ public class PostActivity extends AppCompatActivity implements PostAdapter.OnPos
         if (position >= 0 && position < postList.size()) {
             Post post = postList.get(position);
             if (post != null) {
-                // 데이터베이스에서 게시물 삭제
                 databaseReference.child(post.getPostId()).removeValue()
                         .addOnSuccessListener(aVoid -> {
                             Log.d("PostActivity", "게시글이 성공적으로 삭제되었습니다.");
@@ -160,8 +159,6 @@ public class PostActivity extends AppCompatActivity implements PostAdapter.OnPos
             Log.e("PostActivity", "Invalid position: " + position);
         }
     }
-
-
 
     @Override
     public void onPostEdit(int position) {
