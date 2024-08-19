@@ -49,7 +49,7 @@ public class VerifyUserActivity extends AppCompatActivity {
                     Intent intent = new Intent(VerifyUserActivity.this, EditUserInfoActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(VerifyUserActivity.this, "Verification failed. Check password and try again.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(VerifyUserActivity.this, "정보 수정을 실패했습니다. 비밀번호 확인 후 다시 입력해주세요.", Toast.LENGTH_SHORT).show();
                 }
             });
         }

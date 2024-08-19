@@ -3,7 +3,7 @@ package com.example.sungshinsos;
 public class Comment {
     private String commentId;
     private String postId;
-    private String username; // 작성자의 username
+    private String username;
     private String commentText;
     private String userId;
     private long timestamp;
@@ -23,7 +23,6 @@ public class Comment {
         this.timestamp = timestamp;
     }
 
-    // 추가된 생성자
     public Comment(String postId, String commentText, String userId, String username){
         this.postId = postId;
         this.commentText = commentText;

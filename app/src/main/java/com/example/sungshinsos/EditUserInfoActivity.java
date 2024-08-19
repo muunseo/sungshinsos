@@ -49,17 +49,17 @@ public class EditUserInfoActivity extends AppCompatActivity {
             if (!password.isEmpty()) {
                 user.updatePassword(password).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Toast.makeText(EditUserInfoActivity.this, "Password updated", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditUserInfoActivity.this, "비밀번호 수정을 성공했습니다.", Toast.LENGTH_SHORT).show();
                         // 업데이트 후 MyPageActivity로 돌아가기
                         Intent intent = new Intent(EditUserInfoActivity.this, MyPageActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
-                        Toast.makeText(EditUserInfoActivity.this, "Failed to update password", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditUserInfoActivity.this, "비밀번호 수정을 실패했습니다.", Toast.LENGTH_SHORT).show();
                     }
                 });
             } else {
-                Toast.makeText(EditUserInfoActivity.this, "Password cannot be empty", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditUserInfoActivity.this, "수정할 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
             }
         }
     }

@@ -110,7 +110,7 @@ public class CreatePostActivity extends AppCompatActivity {
 
     public void sendPostToServer(String title, String content, String userId, long timestamp) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3000/") // 서버 URL로 변경
+                .baseUrl("http://10.0.2.2:3000/")
                 .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().setLenient().create()))
                 .build();
 
