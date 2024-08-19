@@ -117,9 +117,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="운정 캠퍼스 지도 사진"
+            android:text="운정 캠퍼스 - 준비중"
             android:textColor="#FFFFFF"
             android:textSize="16sp" />
     </FrameLayout>
 
 </LinearLayout>
+
+

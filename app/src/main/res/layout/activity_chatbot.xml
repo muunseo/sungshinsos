@@ -22,8 +22,25 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/emergencyContactsTitle"
         android:layout_marginTop="7dp"
-        android:text="성신SOS 챗봇입니다. 비상상황과 관련해 궁금하신 것은 무엇이든지 물어보세요! 챗봇과 대화를 시작하려면 안녕하세요를 입력해야 합니다."
+        android:layout_marginBottom="10dp"
+        android:text="성신SOS 챗봇입니다. 비상상황과 관련해 궁금하신 것은 무엇이든지 물어보세요!"
         android:textSize="12sp" />
+
+    <ScrollView
+        android:id="@+id/chatScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/textView"
+        android:layout_above="@+id/inputLayout"
+        android:layout_weight="1"
+        android:layout_marginTop="3dp">
+
+        <LinearLayout
+            android:id="@+id/chatLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+    </ScrollView>
 
     <RelativeLayout
         android:id="@+id/inputLayout"
@@ -37,7 +54,6 @@
         android:paddingEnd="8dp"
         android:paddingBottom="9dp">
 
-        <!-- 수정된 부분: ImageView를 Button으로 변경 -->
         <Button
             android:id="@+id/sendBtn"
             android:layout_width="47dp"
@@ -62,22 +78,6 @@
             android:textColor="#198A3F"
             android:textSize="18sp" />
     </RelativeLayout>
-
-    <ScrollView
-        android:id="@+id/chatScrollView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/inputLayout"
-        android:layout_below="@+id/emergencyContactsTitle"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="-4dp">
-
-        <LinearLayout
-            android:id="@+id/chatLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"/>
-    </ScrollView>
 
     <ImageView
         android:id="@+id/imageView3"
