@@ -121,17 +121,17 @@ public class SoundPickerActivity extends Activity {
         postCreateSwitch.setChecked(sharedPreferences.getBoolean("postCreateEnabled", false));
         pickPostCreateRingtoneButton.setEnabled(postCreateSwitch.isChecked());
         selectedPostCreateRingtoneTextView.setVisibility(postCreateSwitch.isChecked() ? View.VISIBLE : View.GONE);
-        selectedPostCreateRingtoneTextView.setText("Selected Ringtone: " + sharedPreferences.getString("postCreateRingtone", "None"));
+        selectedPostCreateRingtoneTextView.setText("Selected Ringtone: " + sharedPreferences.getString("postCreateRingtone", "Default"));
 
         postUpdateSwitch.setChecked(sharedPreferences.getBoolean("postUpdateEnabled", false));
         pickPostUpdateRingtoneButton.setEnabled(postUpdateSwitch.isChecked());
         selectedPostUpdateRingtoneTextView.setVisibility(postUpdateSwitch.isChecked() ? View.VISIBLE : View.GONE);
-        selectedPostUpdateRingtoneTextView.setText("Selected Ringtone: " + sharedPreferences.getString("postUpdateRingtone", "None"));
+        selectedPostUpdateRingtoneTextView.setText("Selected Ringtone: " + sharedPreferences.getString("postUpdateRingtone", "Default"));
 
         commentCreateSwitch.setChecked(sharedPreferences.getBoolean("commentCreateEnabled", false));
         pickCommentCreateRingtoneButton.setEnabled(commentCreateSwitch.isChecked());
         selectedCommentCreateRingtoneTextView.setVisibility(commentCreateSwitch.isChecked() ? View.VISIBLE : View.GONE);
-        selectedCommentCreateRingtoneTextView.setText("Selected Ringtone: " + sharedPreferences.getString("commentCreateRingtone", "None"));
+        selectedCommentCreateRingtoneTextView.setText("Selected Ringtone: " + sharedPreferences.getString("commentCreateRingtone", "Default"));
     }
 
     @Override
