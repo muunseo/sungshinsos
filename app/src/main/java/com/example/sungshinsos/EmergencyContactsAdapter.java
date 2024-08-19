@@ -132,4 +132,18 @@ public class EmergencyContactsAdapter extends RecyclerView.Adapter<EmergencyCont
             buttonDelete = itemView.findViewById(R.id.buttonDelete);
         }
     }
+
+    public void loadContacts() {
+        SharedPreferences preferences = context.getSharedPreferences(MapActivity.PREFS_NAME, Context.MODE_PRIVATE);
+        String contactsString = preferences.getString(MapActivity.CONTACTS_KEY, "");
+        String[] contactsArray = contactsString.split(";");
+        contactsList.clear();
+        for (String contactString : contactsArray) {
+            if (!contactString.trim().isEmpty()) {
+                EmergencyContact contact = EmergencyContact.fromString(contactString);
+                contactsList.add(contact);
+            }
+        }
+        notifyDataSetChanged(); // RecyclerView 갱신
+    }
 }

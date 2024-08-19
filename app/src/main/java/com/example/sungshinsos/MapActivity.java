@@ -131,7 +131,9 @@ public class MapActivity extends AppCompatActivity {
         if (!contactsString.isEmpty()) {
             String[] contactStrings = contactsString.split(";");
             for (String contactString : contactStrings) {
-                emergencyContacts.add(EmergencyContact.fromString(contactString));
+                if (!contactString.isEmpty()) {
+                    emergencyContacts.add(EmergencyContact.fromString(contactString));
+                }
             }
         }
         contactsAdapter.notifyDataSetChanged();
