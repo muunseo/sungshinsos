@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -50,7 +51,18 @@ public class RegisterActivity extends AppCompatActivity {
                             if (user != null) {
                                 String userId = user.getUid();
                                 String username = getUsernameFromEmail(email); // 이메일에서 학번 추출
-                                firebaseHelper.saveUserData(email, username, ""); // 기본값 빈 문자열
+                                FirebaseMessaging.getInstance().getToken()
+                                        .addOnCompleteListener(tokenTask -> {
+                                            if (tokenTask.isSuccessful()) {
+                                                String fcmToken = tokenTask.getResult();
+                                                firebaseHelper.saveUserData(email, username, fcmToken);
+                                                Toast.makeText(RegisterActivity.this, "회원 가입 성공", Toast.LENGTH_SHORT).show();
+                                                startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                                                finish();
+                                            } else {
+                                                Toast.makeText(RegisterActivity.this, "FCM 토큰 가져오기 실패", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
                             }
                             startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                             finish();
