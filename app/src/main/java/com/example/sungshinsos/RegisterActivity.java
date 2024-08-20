@@ -2,6 +2,7 @@ package com.example.sungshinsos;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -46,8 +47,8 @@ public class RegisterActivity extends AppCompatActivity {
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(RegisterActivity.this, task -> {
                         if (task.isSuccessful()) {
-                            Toast.makeText(RegisterActivity.this, "회원 가입 성공", Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(RegisterActivity.this, "회원 가입 성공", Toast.LENGTH_SHORT).show();
                             if (user != null) {
                                 String userId = user.getUid();
                                 String username = getUsernameFromEmail(email); // 이메일에서 학번 추출
@@ -55,6 +56,8 @@ public class RegisterActivity extends AppCompatActivity {
                                         .addOnCompleteListener(tokenTask -> {
                                             if (tokenTask.isSuccessful()) {
                                                 String fcmToken = tokenTask.getResult();
+                                                Log.d("RegisterActivity", "Saving user data: " + email + ", " + username + ", " + fcmToken);
+
                                                 firebaseHelper.saveUserData(email, username, fcmToken);
                                                 Toast.makeText(RegisterActivity.this, "회원 가입 성공", Toast.LENGTH_SHORT).show();
                                                 startActivity(new Intent(RegisterActivity.this, MainActivity.class));
@@ -64,8 +67,6 @@ public class RegisterActivity extends AppCompatActivity {
                                             }
                                         });
                             }
-                            startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-                            finish();
                         } else {
                             Toast.makeText(RegisterActivity.this, "회원 가입 실패: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }

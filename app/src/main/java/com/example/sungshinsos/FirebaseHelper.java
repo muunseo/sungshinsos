@@ -1,5 +1,7 @@
 package com.example.sungshinsos;
 
+import android.util.Log;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -19,16 +21,28 @@ public class FirebaseHelper {
         if (user != null) {
             String userId = user.getUid();
             DatabaseReference userRef = mDatabaseRef.child("users").child(userId);
-            userRef.child("email").setValue(email);
-            userRef.child("name").setValue(name);
-            userRef.child("fcmToken").setValue(fcmToken);
-            userRef.child("notificationSettings").child("commentCreateEnabled").setValue(true);
-            userRef.child("notificationSettings").child("commentCreateRingtone").setValue("default_ringtone");
-            userRef.child("notificationSettings").child("notificationsEnabled").setValue(true);
-            userRef.child("notificationSettings").child("postCreateEnabled").setValue(true);
-            userRef.child("notificationSettings").child("postCreateRingtone").setValue("default_ringtone");
-            userRef.child("notificationSettings").child("postUpdateEnabled").setValue(true);
-            userRef.child("notificationSettings").child("postUpdateRingtone").setValue("default_ringtone");
+            Log.d("FirebaseHelper", "Saving user data: " + email + ", " + name + ", " + fcmToken);
+// 데이터 null 체크 및 로그 출력
+            if (email != null && name != null && fcmToken != null) {
+                Log.d("FirebaseHelper", "Saving user data to Firebase: " + email + ", " + name + ", " + fcmToken);
+
+                userRef.child("email").setValue(email);
+                userRef.child("name").setValue(name);
+                userRef.child("fcmToken").setValue(fcmToken);
+
+                // 추가 데이터 저장
+                userRef.child("notificationSettings").child("commentCreateEnabled").setValue(true);
+                userRef.child("notificationSettings").child("commentCreateRingtone").setValue("default_ringtone");
+                userRef.child("notificationSettings").child("notificationsEnabled").setValue(true);
+                userRef.child("notificationSettings").child("postCreateEnabled").setValue(true);
+                userRef.child("notificationSettings").child("postCreateRingtone").setValue("default_ringtone");
+                userRef.child("notificationSettings").child("postUpdateEnabled").setValue(true);
+                userRef.child("notificationSettings").child("postUpdateRingtone").setValue("default_ringtone");
+            } else {
+                Log.e("FirebaseHelper", "Failed to save user data: email, name, or fcmToken is null.");
+            }
+        }else {
+            Log.e("FirebaseHelper", "FirebaseUser is null. Cannot save user data.");
         }
     }
 
