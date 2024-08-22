@@ -1,1 +1,5 @@
-"serviceAccountkey.json" 
+# Node.js dependencies
+node_modules/
+
+# Service account key
+serviceAccountkey.json
