@@ -1,5 +1,2 @@
-# Node.js dependencies
-node_modules/
-
-# Service account key
-serviceAccountkey.json
+sungshinsos/sungshinsos-server/node_modules/
+sungshinsos/sungshinsos-server/serviceAccountkey.json
