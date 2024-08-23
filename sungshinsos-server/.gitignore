@@ -1,2 +1,5 @@
-sungshinsos/sungshinsos-server/node_modules/
-sungshinsos/sungshinsos-server/serviceAccountkey.json
+# Node.js 모듈 폴더 무시
+node_modules/
+
+# 서비스 계정 키 파일 무시
+serviceAccountkey.json
